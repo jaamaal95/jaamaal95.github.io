@@ -1,22 +1,15 @@
+import { PostDataType } from '@/types';
 import Link from 'next/link';
+import Tag from './Tag';
 
-export default function ArticleCard({
-  data,
-}: {
-  data: {
-    title: string;
-    date: string;
-    readingTime: string;
-    summary: string;
-    url: string;
-  };
-}) {
-  const { title, date, readingTime, summary, url } = data;
+export default function PostCard({ data }: { data: PostDataType }) {
+  const { title, date, readingTime, summary, url, tag } = data;
   const dateString = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
+
   return (
     <div
       className={
@@ -38,10 +31,17 @@ export default function ArticleCard({
         </div>
 
         <p className="text-sm md:text-base xl:text-lg">
-          {summary}{' '}
+          {summary.slice(0, 130)}
+          {'... '}
           <span className="text-sky-500 cursor-pointer underline">
             Read more
           </span>
+        </p>
+
+        <p className="text-sm md:text-base xl:text-lg flex gap-2 mt-3">
+          {tag.slice(0, 4).map((tagName: string) => (
+            <Tag key={tagName} tag={tagName} />
+          ))}
         </p>
       </Link>
     </div>

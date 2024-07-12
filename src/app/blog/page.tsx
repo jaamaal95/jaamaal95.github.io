@@ -1,5 +1,7 @@
-import ArticleCard from '@/components/ArticleCard';
-import { ALL_POSTS } from '@/data';
+import PostCard from '@/components/PostCard';
+import Tag from '@/components/Tag';
+
+import { ALL_POSTS, TAGS } from '@/data';
 
 export default function Blog() {
   return (
@@ -8,9 +10,16 @@ export default function Blog() {
         <h2 className="text-2xl md:text-3xl xl:text-4xl font-bold">
           All Posts
         </h2>
+
+        <div className="flex flex-wrap gap-2 py-5">
+          {TAGS.map((tag) => (
+            <Tag key={tag} tag={tag} />
+          ))}
+        </div>
+
         <div className="flex flex-col gap-5">
           {ALL_POSTS.map((post) => (
-            <ArticleCard key={post.title} data={post} />
+            <PostCard key={post.title} data={post} />
           ))}
         </div>
       </div>

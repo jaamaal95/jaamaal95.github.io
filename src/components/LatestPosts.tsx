@@ -1,5 +1,5 @@
 import { LATEST_POSTS } from '@/data';
-import ArticleCard from './ArticleCard';
+import PostCard from './PostCard';
 
 export default function LatestPosts() {
   return (
@@ -9,7 +9,7 @@ export default function LatestPosts() {
       </h2>
       <div className="flex flex-col gap-5">
         {LATEST_POSTS.map((post) => (
-          <ArticleCard key={post.title} data={post} />
+          <PostCard key={post.title} data={post} />
         ))}
       </div>
     </div>

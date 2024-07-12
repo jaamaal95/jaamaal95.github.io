@@ -3,6 +3,7 @@ import Link from 'next/link';
 import LinkItem from '@/components/LinkItem';
 
 import { FOOTER_LINKS } from '@/constants';
+import { FooterLink } from '@/types';
 
 function FooterLinkGroup({
   label,
@@ -70,10 +71,4 @@ function FooterBottom({ currentYear }: { currentYear: number }) {
       </p>
     </div>
   );
-}
-
-interface FooterLink {
-  label: string;
-  link: string;
-  subLinks?: FooterLink[];
 }
